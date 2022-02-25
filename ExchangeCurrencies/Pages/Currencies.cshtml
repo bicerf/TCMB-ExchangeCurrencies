@@ -1,0 +1,96 @@
+﻿@page
+@model ExchangeCurrencies.Pages.CurrenciesModel
+
+
+<div>
+    <h1 class="display-4">Service-1 (Get All Currencies Exchange)</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="text-align:center">
+                    Currency
+                </th>
+                <th style="text-align:center">
+                    Last Updated
+                </th>
+                <th style="text-align:center">
+                    Current Rate
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.CurrenciesList)
+            {
+                <tr>
+                    <td style="text-align:center">
+                        @row.CurrencyName - TRY
+                    </td>
+                    <td style="text-align:center">
+                        @row.Date
+                    </td>
+                    <td style="text-align:center">
+                        @row.ForexBuying
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+
+    </table>
+
+</div>
+
+<div>
+    <h1 class="display-4">Service-2 (Get Spesific Currency Exchange)</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="text-align:center">
+                    Currency
+                </th>
+                <th style="text-align:center">
+                    Date
+                </th>
+                <th style="text-align:center">
+                    Rate
+                </th>
+                <th style="text-align:center">
+                    Changes
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align:center"> @Model.CurrenciesList[0].CurrencyName</td>
+                <td style="text-align:center">@Model.CurrenciesList[0].Date.AddDays(-1)</td>
+                <td style="text-align:center">@Model.CurrenciesList[0].ForexBuying</td>
+                <td style="text-align:center">-</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">@Model.CurrenciesChangeList[0].CurrencyName</td>
+                <td style="text-align:center">@Model.CurrenciesChangeList[0].Date</td>
+                <td style="text-align:center">@Model.CurrenciesChangeList[0].ForexBuying</td>
+                @{var n = Model.CurrenciesChangeList[0].ForexBuying / Model.CurrenciesList[0].ForexBuying;
+                    if (n == 0)
+                    {
+                        <td style="text-align:center">-</td>
+
+                    }
+                    if (n > 0)
+                    {
+                        <td style="text-align:center">+@n %</td>
+                    }
+                    if (n < 0)
+                    {
+                        <td style="text-align:center">-@n %</td>
+                    }
+                }
+            </tr>
+
+        </tbody>
+
+    </table>
+</div>
+
