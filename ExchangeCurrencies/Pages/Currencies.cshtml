@@ -65,13 +65,13 @@
         </thead>
         <tbody>
             <tr>
-                <td style="text-align:center"> @Model.CurrenciesList[0].CurrencyName</td>
+                <td style="text-align:center"> @Model.CurrenciesList[0].CurrencyName - TRY</td>
                 <td style="text-align:center">@Model.CurrenciesList[0].Date.AddDays(-1).ToShortDateString()</td>
                 <td style="text-align:center">@Model.CurrenciesList[0].ForexBuying</td>
                 <td style="text-align:center">-</td>
             </tr>
             <tr>
-                <td style="text-align:center">@Model.CurrenciesChangeList[0].CurrencyName</td>
+                <td style="text-align:center">@Model.CurrenciesChangeList[0].CurrencyName - TRY</td>
                 <td style="text-align:center">@Model.CurrenciesChangeList[0].Date.ToShortDateString()</td>
                 <td style="text-align:center">@Model.CurrenciesChangeList[0].ForexBuying</td>
                 @{var n = Model.CurrenciesChangeList[0].ForexBuying - Model.CurrenciesList[0].ForexBuying;
