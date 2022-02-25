@@ -1,5 +1,7 @@
 ﻿@page
 @model ExchangeCurrencies.Pages.CurrenciesModel
+@using System
+
 
 
 <div>
@@ -72,7 +74,10 @@
                 <td style="text-align:center">@Model.CurrenciesChangeList[0].CurrencyName</td>
                 <td style="text-align:center">@Model.CurrenciesChangeList[0].Date</td>
                 <td style="text-align:center">@Model.CurrenciesChangeList[0].ForexBuying</td>
-                @{var n = Model.CurrenciesChangeList[0].ForexBuying / Model.CurrenciesList[0].ForexBuying;
+                @{var n = Model.CurrenciesChangeList[0].ForexBuying - Model.CurrenciesList[0].ForexBuying;
+                    var m = (Model.CurrenciesChangeList[0].ForexBuying - Model.CurrenciesList[0].ForexBuying) / Model.CurrenciesList[0].ForexBuying * 100;
+                    m = Math.Round(m.Value, 2);
+
                     if (n == 0)
                     {
                         <td style="text-align:center">-</td>
@@ -80,11 +85,11 @@
                     }
                     if (n > 0)
                     {
-                        <td style="text-align:center">+@n %</td>
+                        <td style="text-align:center">+@m %</td>
                     }
                     if (n < 0)
                     {
-                        <td style="text-align:center">-@n %</td>
+            <td style="text-align:center">@m %</td>
                     }
                 }
             </tr>
